@@ -1,0 +1,4 @@
+oldhome
+*~
+*.fasl
+lisp/**
