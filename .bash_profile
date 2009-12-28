@@ -94,3 +94,6 @@ esac
 export DARCS_EMAIL="Ryan Davis <ryan@acceleration.net>"
 export EMAIL="ryan@acceleration.net"
 export PYTHONSTARTUP=~/.pythonrc
+
+echo "Checking for config updates... "
+config pull
