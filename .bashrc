@@ -97,3 +97,58 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+#global options
+alias config="git --git-dir=${HOME}/.config.git/ --work-tree=${HOME}"
+alias ll='ls -hal'
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'
+export EDITOR=emacsclient
+export EMAIL="ryan@acceleration.net"
+export PYTHONSTARTUP=~/.pythonrc
+
+case $(hostname) in
+    ryan-laptop) #eeepc-specific
+	export EMAIL="ryan@mokeys.org"
+	;;
+    ryan) #work-specific
+	export SSH_AUTH_SOCK='/tmp/.ssh-socket'
+	ssh-add -l 2>&1 >/dev/null
+	if [ $? = 2 ]; then
+# Exit status 2 means couldn't connect to ssh-agent; start one now
+	    rm $SSH_AUTH_SOCK
+	    ssh-agent -a $SSH_AUTH_SOCK >/tmp/.ssh-script
+	    . /tmp/.ssh-script
+	    echo $SSH_AGENT_PID >/tmp/.ssh-agent-pid
+	    ssh-add
+	fi
+
+	function kill-agent {
+	    pid=`cat /tmp/.ssh-agent-pid`
+	    kill $pid
+	}
+	
+	export GIT_SSH=ssh
+	export SVN_SSH=ssh
+	export PATH="/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:$PATH"
+	
+	export HISTSIZE=1000  #double default
+    #append our current history to the file, clear the hist, then load from file.
+	export PROMPT_COMMAND="history -a;history -c; history -r;$PROMPT_COMMAND"
+	export HISTIGNORE="history *:cd *:df *:exit:fg:bg:file *:clear"
+    ;;
+    sakimet) #dev server
+	export EDITOR=nano
+	source /etc/profile.d/autojump.sh
+	export CVS_RSH=ssh
+	export CVSROOT=:ext:alb-desktop:/usr/local/cvsroot
+	export PS1='\[\e]0;\u@\h: \w\a\]\n\[\e[32m\]\u@\h: \[\e[33m\]\w\[\e[1;34m\]$(__git_ps1)\[\e[0m\]\n > '
+    ;;
+esac
+
+#various settings that depend on the machine-specific stuff
+export DARCS_EMAIL="Ryan Davis <${EMAIL}>"
+
+echo "Checking for config updates... "
+config pull
+
