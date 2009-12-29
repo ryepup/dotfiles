@@ -56,7 +56,11 @@
 		("\.wdproj$" . xml-mode)
 		("\.rhtml$" . html-mode)
 		("\.include$" . xml-mode)
-		("\\.org$" . org-mode)) 
+		("\\.org$" . org-mode)
+		("\.rhtml$" . html-mode)
+		("\\.cfc$" . html-mode)
+		("\\.cfm$" . html-mode)
+		("\\.asp$" . html-mode)) 
 	      auto-mode-alist))
 
 (add-hook 'xml-mode-hook
