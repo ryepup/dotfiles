@@ -4,7 +4,6 @@
 (show-paren-mode t)
 (global-auto-revert-mode 1)
 
-
 ;;restore the emacs session on startup.
 (desktop-save-mode 1)
 
@@ -21,14 +20,12 @@
 ;; Show column-number in the mode line
 (column-number-mode 1)
 
-(pc-selection-mode)
+(pc-selection-mode t)
 
 (require 'redo)
-
 (global-set-key (read-kbd-macro "C-z") 'undo)
 (global-set-key (read-kbd-macro "C-S-Z") 'redo)
 (global-set-key (read-kbd-macro "<C-tab>") 'other-window)
-
 
 ;; Replace Stupid yes or no with y or n
 (defalias 'old-yes-or-no-p (function yes-or-no-p))
@@ -49,3 +46,19 @@
  
 (when window-system 
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
+
+(setq auto-mode-alist
+      (append '(("\.xul$" . xml-mode)
+		("\.rdf$" . xml-mode)
+		("\.config$" . xml-mode)
+		("\.css$" . css-mode)
+		("\.build$" . xml-mode)
+		("\.wdproj$" . xml-mode)
+		("\.rhtml$" . html-mode)
+		("\.include$" . xml-mode)
+		("\\.org$" . org-mode)) 
+	      auto-mode-alist))
+
+(add-hook 'xml-mode-hook
+	  (lambda ()
+	    (setq sgml-indent-data 'T)))
