@@ -96,6 +96,10 @@ case $(hostname) in
     #append our current history to the file, clear the hist, then load from file.
 	export PROMPT_COMMAND="history -a;history -c; history -r;$PROMPT_COMMAND"
 	export HISTIGNORE="history *:cd *:df *:exit:fg:bg:file *:clear"
+
+	function offsite-backup {
+	    time rsync -vrtz --delete --exclude=PendingDeletion/ /cygdrive/n/Static-Servers/ /cygdrive/f/Static-Servers
+	}
     ;;
     sakimet) #dev server
 	export EDITOR=nano
