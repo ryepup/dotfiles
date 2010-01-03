@@ -103,31 +103,36 @@ alias config="git --git-dir=${HOME}/.config.git/ --work-tree=${HOME}"
 alias ll='ls -hal'
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
-export EDITOR=emacsclient
 export EMAIL="ryan@acceleration.net"
 export PYTHONSTARTUP=~/.pythonrc
 
+function kill-agent {
+    pid=`cat /tmp/.ssh-agent-pid`
+    kill $pid
+}
+
+function __ensure_agent {
+    export SSH_AUTH_SOCK='/tmp/.ssh-socket'
+    ssh-add -l 2>&1 >/dev/null
+    if [ $? = 2 ]; then
+# Exit status 2 means couldn't connect to ssh-agent; start one now
+	rm $SSH_AUTH_SOCK
+	ssh-agent -a $SSH_AUTH_SOCK >/tmp/.ssh-script
+	. /tmp/.ssh-script
+	echo $SSH_AGENT_PID >/tmp/.ssh-agent-pid
+	ssh-add
+    fi
+}
+
 case $(hostname) in
     ryan-laptop) #eeepc-specific
+	__ensure_agent
+	export EDITOR=emacsclient
 	export EMAIL="ryan@mokeys.org"
 	;;
     ryan) #work-specific
-	export SSH_AUTH_SOCK='/tmp/.ssh-socket'
-	ssh-add -l 2>&1 >/dev/null
-	if [ $? = 2 ]; then
-# Exit status 2 means couldn't connect to ssh-agent; start one now
-	    rm $SSH_AUTH_SOCK
-	    ssh-agent -a $SSH_AUTH_SOCK >/tmp/.ssh-script
-	    . /tmp/.ssh-script
-	    echo $SSH_AGENT_PID >/tmp/.ssh-agent-pid
-	    ssh-add
-	fi
-
-	function kill-agent {
-	    pid=`cat /tmp/.ssh-agent-pid`
-	    kill $pid
-	}
-	
+	__ensure_agent
+	export EDITOR=emacsclient	
 	export GIT_SSH=ssh
 	export SVN_SSH=ssh
 	export PATH="/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:$PATH"
