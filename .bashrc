@@ -129,6 +129,23 @@ case $(hostname) in
 	__ensure_agent
 	export EDITOR=emacsclient
 	export EMAIL="ryan@mokeys.org"
+
+	function rpd_stop-lapse(){
+	    ps --pid `cat ~/cam/pid` > /dev/null
+	    if [ $? = 0 ]; then
+		kill `cat ~/cam/pid`
+	    fi
+	    rm ~/cam/{pid|log}
+	}
+	function rpd_start_lapse(){
+	    freq=$1
+	    if [ -z "$freq" ]; then
+		freq=30
+	    fi
+	    fswebcam --pid ~/cam/pid --log ~/cam/log -b -l $freq -r 352x288 --no-banner --png -1 ~/cam/%F-%T.png
+	    echo "capture started, will take a shot every $freq seconds."
+	    unset freq
+	}
 	;;
     ryan) #work-specific
 	__ensure_agent
