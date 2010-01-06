@@ -106,6 +106,25 @@ case $(hostname) in
 	    echo "capture started, will take a shot every $freq seconds."
 	    unset freq
 	}
+
+	function rpd_process_timelapse(){
+	    i=0; 
+	    imgPrefix=$1
+	    for f in $@; 
+	    do 
+		if [ -z "$first" ]; then
+		    first=yes
+		else
+		    cp $f $(printf ${imgPrefix}%05d.png $i); 
+		    i=`expr $i + 1`; 
+		fi
+	    done;
+	    echo "Copy/renamed $i images"
+	    ffmpeg -r 10 -qscale 5 -i ${imgPrefix}%05d.png ${imgPrefix}.mp4
+	    echo "wrote ${imgPrefix}.mp4"
+	    rm ${imgPrefix}*.png
+	    unset i imgPrefix first
+	}
 	;;
     ryan) #work-specific
 	__ensure_agent
