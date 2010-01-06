@@ -95,7 +95,7 @@ case $(hostname) in
 	    if [ $? = 0 ]; then
 		kill `cat ~/cam/pid`
 	    fi
-	    rm ~/cam/{pid|log}
+	    rm ~/cam/pid ~/cam/log
 	}
 	function rpd_start_lapse(){
 	    freq=$1
