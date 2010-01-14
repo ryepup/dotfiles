@@ -27,7 +27,7 @@
 (global-set-key (read-kbd-macro "C-S-Z") 'redo)
 (global-set-key (read-kbd-macro "<C-tab>") 'other-window)
 
-;; Replace Stupid yes or no with y or n
+;; Replace yes or no with y or n
 (defalias 'old-yes-or-no-p (function yes-or-no-p))
 (defalias 'yes-or-no-p (function y-or-n-p))
 
@@ -66,3 +66,7 @@
 (add-hook 'xml-mode-hook
 	  (lambda ()
 	    (setq sgml-indent-data 'T)))
+
+;; some keys for org-mode
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
