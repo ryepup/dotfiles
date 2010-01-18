@@ -84,6 +84,17 @@ function __ensure_agent {
     fi
 }
 
+function svn_line_changes {
+    echo "Scanning $@"
+    removed=`svn diff $@ | grep "^-[^-]" | wc -l`
+    echo "Removed: $removed"
+    added=`svn diff $@ | grep "^+[^+]" | wc -l`
+    echo "Added: $added"
+    difference=`expr $added - $removed`
+    echo "Difference: $difference"
+    unset removed added difference
+}
+
 case $(hostname) in
     ryan-laptop) #eeepc-specific
 	__ensure_agent
