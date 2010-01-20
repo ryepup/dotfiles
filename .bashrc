@@ -136,6 +136,9 @@ case $(hostname) in
 	    rm ${imgPrefix}*.png
 	    unset i imgPrefix first
 	}
+	echo "Checking for config updates... "
+	config pull
+
 	;;
     ryan) #work-specific
 	__ensure_agent
@@ -152,6 +155,10 @@ case $(hostname) in
 	function offsite-backup {
 	    time rsync -vrtz --delete --exclude=PendingDeletion/ /cygdrive/n/Static-Servers/ /cygdrive/f/Static-Servers
 	}
+
+	echo "Checking for config updates... "
+	config pull
+
     ;;
     sakimet) #dev server
 	export EDITOR=nano
@@ -164,5 +171,3 @@ esac
 #various settings that depend on the machine-specific stuff
 export DARCS_EMAIL="Ryan Davis <${EMAIL}>"
 
-echo "Checking for config updates... "
-config pull
