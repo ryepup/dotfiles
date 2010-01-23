@@ -1,0 +1,8 @@
+[user]
+	name = Ryan Davis
+	email = ryan@mokeys.org
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
