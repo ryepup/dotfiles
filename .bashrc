@@ -170,4 +170,4 @@ esac
 
 #various settings that depend on the machine-specific stuff
 export DARCS_EMAIL="Ryan Davis <${EMAIL}>"
-git confg --global user.email $EMAIL
+git config --global user.email $EMAIL
