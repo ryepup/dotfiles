@@ -70,3 +70,7 @@
 ;; some keys for org-mode
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
+
+;;ibuffer goodness
+(require 'ibuffer) 
+(global-set-key (kbd "C-x C-b") 'ibuffer)
