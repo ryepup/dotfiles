@@ -140,7 +140,7 @@ case $(hostname) in
 	config pull
 
 	;;
-    ryan) #work-specific
+    Ryan-PC) #work-specific
 	__ensure_agent
 	export EDITOR=emacsclient	
 	export GIT_SSH=ssh
