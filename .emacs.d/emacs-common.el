@@ -74,3 +74,7 @@
 ;;ibuffer goodness
 (require 'ibuffer) 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-calm-forest)
