@@ -47,22 +47,6 @@
 (when window-system 
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
-(setq auto-mode-alist
-      (append '(("\.xul$" . xml-mode)
-		("\.rdf$" . xml-mode)
-		("\.config$" . xml-mode)
-		("\.css$" . css-mode)
-		("\.build$" . xml-mode)
-		("\.wdproj$" . xml-mode)
-		("\.rhtml$" . html-mode)
-		("\.include$" . xml-mode)
-		("\\.org$" . org-mode)
-		("\.rhtml$" . html-mode)
-		("\\.cfc$" . html-mode)
-		("\\.cfm$" . html-mode)
-		("\\.asp$" . html-mode)) 
-	      auto-mode-alist))
-
 (add-hook 'xml-mode-hook
 	  (lambda ()
 	    (setq sgml-indent-data 'T)))
@@ -80,3 +64,26 @@
 (color-theme-calm-forest)
 
 (require 'js2-mode)
+
+(custom-set-variables
+ '(html-helper-mode-global-JSP-not-ASP nil nil (html-helper-mode))
+ '(html-helper-mode-uses-visual-basic t nil (html-helper-mode)))
+
+(autoload 'asp-html-helper-mode "html-helper-mode" "Yay ASP" t)
+
+(setq auto-mode-alist
+      (append '(("\.xul$" . xml-mode)
+		("\.rdf$" . xml-mode)
+		("\.config$" . xml-mode)
+		("\.css$" . css-mode)
+		("\.build$" . xml-mode)
+		("\.wdproj$" . xml-mode)
+		("\.rhtml$" . html-mode)
+		("\.include$" . xml-mode)
+		("\\.org$" . org-mode)
+		("\.rhtml$" . html-mode)
+		("\\.cfc$" . html-mode)
+		("\\.cfm$" . html-mode)
+		("\\.js$" . js2-mode)
+		("\\.asp$" . asp-html-helper-mode)) 
+	      auto-mode-alist))
