@@ -1,4 +1,5 @@
 (push (expand-file-name "~/.emacs.d") load-path)
+(setq backup-directory-alist '(("." . "~/.emacs-backups"))) ; stop leaving backup~ turds scattered everywhere
 
 (tool-bar-mode 0)
 (show-paren-mode t)
@@ -87,3 +88,9 @@
 		("\\.js$" . js2-mode)
 		("\\.asp$" . asp-html-helper-mode)) 
 	      auto-mode-alist))
+
+(push (cons "\\.\\(lisp\\|asd\\|sh\\|py\\|cl\\)\\'" 'utf-8-unix) auto-coding-alist)
+(setq default-buffer-file-coding-system 'utf-8-unix)
+
+(require 'zencoding-mode)
+(add-hook 'sgml-mode-hook 'zencoding-mode)

@@ -35,9 +35,6 @@
 	  (lambda ()
 	    (inferior-slime-mode t)))
 
-
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'mic-paren)
 (paren-activate)
