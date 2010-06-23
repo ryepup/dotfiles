@@ -153,15 +153,16 @@ case $(hostname) in
 	export HISTIGNORE="history *:cd *:df *:exit:fg:bg:file *:clear"
 
 	function offsite-backup {
-	    time rsync -vrtz --delete --exclude=PendingDeletion/ /cygdrive/n/Static-Servers/ /cygdrive/f/Static-Servers
+	    time rsync -rtz --delete --exclude=PendingDeletion/ /cygdrive/n/Static-Servers/ /cygdrive/f/Static-Servers
+	    time rsync -rtz --delete /cygdrive/n/OfficeShare/khufu-OfficeShare/ /cygdrive/f/OfficeShare/khufu-OfficeShare
 	}
 
 	echo "Checking for config updates... "
 	config pull
 
     ;;
-    sakimet) #dev server
-	export EDITOR=nano
+    progden) #dev server
+	export EDITOR=/bin/local-emacs-edit.sh
 	source /etc/profile.d/autojump.sh
 	export CVS_RSH=ssh
 	export CVSROOT=:ext:alb-desktop:/usr/local/cvsroot
