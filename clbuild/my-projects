@@ -2,3 +2,6 @@
 gainesville-green get_git ssh://git.acceleration.net/var/git/gainesville-green/
 holly get_git git@github.com:ryepup/holly.git
 chanl get_git git@github.com:ryepup/chanl.git
+space-game get_git git@github.com:ryepup/space-game.git
+sandbox get_git git@github.com:ryepup/sandbox.git
+hexmap get_git git@github.com:ryepup/hexmap.git
