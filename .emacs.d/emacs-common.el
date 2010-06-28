@@ -85,6 +85,7 @@
 		("\.rhtml$" . html-mode)
 		("\\.cfc$" . html-mode)
 		("\\.cfm$" . html-mode)
+		("\\.tal$" . html-mode)
 		("\\.js$" . js2-mode)
 		("\\.asp$" . asp-html-helper-mode)) 
 	      auto-mode-alist))
