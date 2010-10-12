@@ -10,13 +10,10 @@
 (push ".dll" completion-ignored-extensions)
 (push ".so" completion-ignored-extensions)
 
-
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "sbcl")
 (require 'slime)
 (slime-setup '(slime-fancy slime-asdf slime-tramp slime-indentation))
-
-;;;;Functions for startin a lisp
-(setq inferior-lisp-program "~/clbuild/clbuild lisp")
-
 
 ;;;;;; Specify modes for Lisp file extensions
 (setq auto-mode-alist
