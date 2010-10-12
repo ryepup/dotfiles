@@ -1,7 +1,13 @@
-
-gainesville-green get_git ssh://git.acceleration.net/var/git/gainesville-green/
-holly get_git git@github.com:ryepup/holly.git
+cl-colors    get_svn_clnet
+rpd-hexmap   get_git git://github.com/ryepup/rpd-hexmap.git
+sandbox      get_git git://github.com/ryepup/sandbox.git
+space-game   get_git git://github.com/ryepup/space-game.git
+arduino-experiments   get_git git://github.com/ryepup/arduino-experiments.git
+hexmap   get_git git://github.com/ryepup/hexmap.git
+wedding-logo   get_git git://github.com/ryepup/wedding-logo.git
+cl-heap get_svn svn://common-lisp.net/project/cl-heap/svn/cl-heap/trunk
+xlunit get_tarball http://files.b9.com/xlunit/xlunit-latest.tar.gz
+dice get_tarball http://src.hexapodia.net/dice.tar.gz
+cl-geometry get_git git@github.com:ryepup/cl-geometry.git
+pcall get_darcs http://marijn.haverbeke.nl/pcall/pcall
 chanl get_git git@github.com:ryepup/chanl.git
-space-game get_git git@github.com:ryepup/space-game.git
-sandbox get_git git@github.com:ryepup/sandbox.git
-hexmap get_git git@github.com:ryepup/hexmap.git
