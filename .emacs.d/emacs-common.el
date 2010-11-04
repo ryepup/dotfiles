@@ -1,9 +1,20 @@
 (push (expand-file-name "~/.emacs.d") load-path)
 (setq backup-directory-alist '(("." . "~/.emacs-backups"))) ; stop leaving backup~ turds scattered everywhere
 
+(prefer-coding-system 'utf-8-unix)
+
+(require 'mediawiki)
+
 (tool-bar-mode 0)
 (show-paren-mode t)
 (global-auto-revert-mode 1)
+
+;;this breaks tramp right now: ^m on the end of every line; disable it.
+(setq vc-handled-backends (delq 'Git vc-handled-backends))
+
+;; never deploy overwrite-mode
+(add-hook 'post-command-hook
+	  (lambda () (if overwrite-mode (overwrite-mode 0))))
 
 ;;restore the emacs session on startup.
 (desktop-save-mode 1)
@@ -65,6 +76,7 @@
 (color-theme-calm-forest)
 
 (require 'js2-mode)
+(require 'php-mode)
 
 (custom-set-variables
  '(html-helper-mode-global-JSP-not-ASP nil nil (html-helper-mode))
@@ -86,6 +98,7 @@
 		("\\.cfc$" . html-mode)
 		("\\.cfm$" . html-mode)
 		("\\.tal$" . html-mode)
+		("\\.php" . php-mode)
 		("\\.js$" . js2-mode)
 		("\\.asp$" . asp-html-helper-mode)) 
 	      auto-mode-alist))

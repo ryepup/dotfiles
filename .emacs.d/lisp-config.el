@@ -14,11 +14,20 @@
     (insert "\n(defpackage #:" package "\n  (:use #:cl))\n\n")
     (insert "(in-package #:" package ")\n\n")))
 
-(defun slime-work ()
-  "Start Slime without an inferior lisp."
+(defvar hs-toggle-all-last-val nil)
+(defun hs-toggle-all ()
   (interactive)
-  (shell-command "ssh -o ServerAliveInterval=300 -L 4005:127.0.0.1:4213 -L4313:127.0.0.1:4313 -L 8213:127.0.0.1:8213  progden bash --login start-swank.sh &")
-  (sleep-for 10)
-  (slime-connect "localhost" 4005))
+  (make-local-variable 'hs-toggle-all-last-val)
+  ;; only modify buffer local copy
+  (setq hs-toggle-all-last-val (not hs-toggle-all-last-val))
+  (if hs-toggle-all-last-val
+      (hs-hide-all)
+      (hs-show-all)))
 
+;; Customize post mode a bit.
+(defun my-lisp-mode-hook ()
+  (hs-minor-mode 1)
+  (local-set-key (kbd "C-+" ) 'hs-toggle-hiding)
+  (local-set-key (kbd "C-M-+" ) 'hs-toggle-all))
 
+(add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
