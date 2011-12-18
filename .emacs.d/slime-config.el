@@ -15,7 +15,7 @@
 (slime-setup '(slime-fancy slime-asdf slime-tramp slime-indentation))
 
 ;;;;Functions for startin a lisp
-(setq inferior-lisp-program "~/clbuild/clbuild lisp")
+(setq inferior-lisp-program "sbcl")
 
 
 ;;;;;; Specify modes for Lisp file extensions
@@ -43,7 +43,7 @@
 ;;some slime settings
 (setq
       ;common-lisp-hyperspec-root "file:///L:/HyperSpec/HyperSpec/"
-      lisp-indent-function 'cl-indent:function
+      lisp-indent-function 'common-lisp-indent-function
       slime-complete-symbol-function 'slime-fuzzy-complete-symbol
       slime-startup-animation t
       slime-repl-return-behaviour :send-only-if-after-complete)

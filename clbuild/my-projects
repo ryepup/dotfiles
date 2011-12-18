@@ -4,4 +4,6 @@ holly get_git git@github.com:ryepup/holly.git
 chanl get_git git@github.com:ryepup/chanl.git
 space-game get_git git@github.com:ryepup/space-game.git
 sandbox get_git git@github.com:ryepup/sandbox.git
-hexmap get_git git@github.com:ryepup/hexmap.git
+rpd-hexmap get_git git@github.com:ryepup/rpd-hexmap.git
+arduino-experiments get_git git@github.com:ryepup/arduino-experiments.git
+buclet get_git http://github.com/aerique/buclet.git
