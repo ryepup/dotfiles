@@ -40,7 +40,7 @@
 ;;some slime settings
 (setq
       ;common-lisp-hyperspec-root "file:///L:/HyperSpec/HyperSpec/"
-      lisp-indent-function 'cl-indent:function
+      lisp-indent-function 'common-lisp-indent-function
       slime-complete-symbol-function 'slime-fuzzy-complete-symbol
       slime-startup-animation t
       slime-repl-return-behaviour :send-only-if-after-complete)
@@ -154,3 +154,7 @@
 (or (fboundp 'replace-in-string)
     (defun replace-in-string (string find replace)
       (replace-regexp-in-string find replace string)))
+(push
+ (slime-create-filename-translator :machine-instance "progden" :remote-host "progden.acceleration.net" :username "ryepup") 
+ slime-filename-translations
+)

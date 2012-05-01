@@ -1,5 +1,6 @@
 (push (expand-file-name "~/.emacs.d") load-path)
 (setq backup-directory-alist '(("." . "~/.emacs-backups"))) ; stop leaving backup~ turds scattered everywhere
+(setq auto-save-file-name-transforms '((".*" "~/.emacs-backups/\\1" t)))
 
 (tool-bar-mode 0)
 (show-paren-mode t)
@@ -34,6 +35,9 @@
 
 ;;start emacs listening for other "open file" requests from windows
 (server-start)
+
+(require 'edit-server)
+(edit-server-start)
 
 ;;; ask before quitting
 (defun ask-before-closing ()
