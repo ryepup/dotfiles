@@ -1,4 +1,4 @@
-# -*- mode: sh *-*
+# -*- mode: sh -*-
 __ensure_agent
 export EDITOR=emacsclient
 export EMAIL="ryan@mokeys.org"
