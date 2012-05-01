@@ -1,4 +1,18 @@
 (push (expand-file-name "~/.emacs.d") load-path)
+(push (expand-file-name "~/.emacs.d/org-mode/lisp") load-path)
+(push (expand-file-name "~/.emacs.d/org-mode/contrib/lisp") load-path)
+(push (expand-file-name "~/.emacs.d/org2blog") load-path)
+(require 'org-install)
+(require 'org2blog-autoloads)
+
+(setq org2blog/wp-blog-alist
+       '(("unwashedmeme"
+          :url "http://ryepup.unwashedmeme.com/blog/xmlrpc.php"
+          :username "admin"
+          :default-title "Test"
+          :default-categories ("org2blog" "emacs")
+          :tags-as-categories nil)))
+
 (setq backup-directory-alist '(("." . "~/.emacs-backups"))) ; stop leaving backup~ turds scattered everywhere
 
 (tool-bar-mode 0)
