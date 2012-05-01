@@ -100,3 +100,8 @@ function svn_line_changes {
 #various settings that depend on the machine-specific stuff
 export DARCS_EMAIL="Ryan Davis <${EMAIL}>"
 git config --global user.email $EMAIL
+
+function git_repeat {
+    date
+    while ! git $1 ; do sleep 1; date; done
+}

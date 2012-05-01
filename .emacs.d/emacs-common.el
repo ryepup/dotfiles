@@ -1,10 +1,13 @@
 (push (expand-file-name "~/.emacs.d") load-path)
 (setq backup-directory-alist '(("." . "~/.emacs-backups"))) ; stop leaving backup~ turds scattered everywhere
 
+(custom-set-variables ; stop leaving backup ~ & # turds scattered everywhere
+  '(auto-save-file-name-transforms '((".*" "~/.emacs-backups/\\1" t))))
+
 (prefer-coding-system 'utf-8-unix)
 
 (require 'mediawiki)
-
+(require 'smex)
 (tool-bar-mode 0)
 (show-paren-mode t)
 (global-auto-revert-mode 1)
@@ -18,9 +21,6 @@
 
 ;;restore the emacs session on startup.
 (desktop-save-mode 1)
-
-;; does directory completion stuff
-(ido-mode 1)
 
 (require 'uniquify) 
 (setq 
