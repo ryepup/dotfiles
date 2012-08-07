@@ -6,3 +6,15 @@
 	diff = auto
 	interactive = auto
 	status = auto
+[help]
+        autocorrect = 1
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lgd = log --decorate
+        dp = diff --patience
+        sp = show --patience
+        cwsc = commit -m 'whitespace / formatting cleanup'
+        ski = stash --keep-index
+	grepi = grep -in
+[push]
+	default = tracking
