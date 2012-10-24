@@ -3,3 +3,15 @@ I'm tired of syncing config files.
 http://necoro.wordpress.com/2009/10/08/managing-your-configuration-files-with-git-and-stgit/
 http://necoro.wordpress.com/2009/10/10/managing-your-configuration-files-with-git-revisited/
 http://www.silassewell.com/blog/2009/03/08/profile-management-with-git-and-github/
+
+# setting up a new computer:
+
+ 1. install SSH keys
+ 2.  git clone git@github.com:ryepup/dotfiles.git config.git
+ 3.  mv config.git/.git .config.git
+ 4.  shopt -s dotglob
+ 5.  mv -i config.git/* .
+ 6.  cp .bashrc .bashrc.bak
+ 7.  mv -i config.git/* .
+ 8.  rmdir config.git
+ 9.  source .bashrc
