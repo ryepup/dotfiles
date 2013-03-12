@@ -65,6 +65,8 @@ export EMAIL="ryan@acceleration.net"
 export PYTHONSTARTUP=~/.pythonrc
 export PS1='\[\e]0;\u@\h: \w\a\]\n\[\e[32m\]\u@\h: \[\e[33m\]\w\[\e[1;34m\]$(__git_ps1)\[\e[0m\]\n$ '
 
+# load up virtualenvwrapper if we've got one
+which virtualenvwrapper.sh > /dev/null && source `which virtualenvwrapper.sh`
 
 function kill-agent {
     pid=`cat /tmp/.ssh-agent-pid`
