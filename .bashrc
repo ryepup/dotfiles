@@ -63,7 +63,7 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 export EMAIL="ryan@acceleration.net"
 export PYTHONSTARTUP=~/.pythonrc
-export PS1='\[\e]0;\u@\h: \w\a\]\n\[\e[32m\]\u@\h: \[\e[33m\]\w\[\e[1;34m\]$(__git_ps1)\[\e[0m\]\n > '
+export PS1='\[\e]0;\u@\h: \w\a\]\n\[\e[32m\]\u@\h: \[\e[33m\]\w\[\e[1;34m\]$(__git_ps1)\[\e[0m\]\n$ '
 
 
 function kill-agent {
