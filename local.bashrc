@@ -3,7 +3,6 @@ __ensure_agent
 export EDITOR=emacsclient	
 export GIT_SSH=ssh
 export SVN_SSH=ssh
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:$PATH"
 
 export HISTSIZE=1000  #double default
 #append our current history to the file, clear the hist, then load from file.
