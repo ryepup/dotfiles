@@ -89,7 +89,7 @@ function svn_line_changes {
     unset removed added difference
 }
 
-. local.bashrc
+. ~/local.bashrc
 
 #various settings that depend on the machine-specific stuff
 export DARCS_EMAIL="Ryan Davis <${EMAIL}>"
