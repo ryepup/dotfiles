@@ -12,3 +12,7 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
         glg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all
 	lgd = log --decorate
+	staged = diff --patience --staged
+	reword = commit --amend
+	fixup = commit --amend -C HEAD
+	cwsc = commit -m 'whitespace-cleanup'
