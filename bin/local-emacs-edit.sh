@@ -16,11 +16,13 @@ if ! [ -r ~/.emacs.d/server/server ]; then
 fi
 
 #build the tramp filename
+FN="/`whoami`@`hostname -f`:"
 case $1 in
-     /*) FN="/`whoami`@`hostname`:$1" ;;
-     *) FN="/`whoami`@`hostname`:`pwd`/$1" ;;
+     /*) FN="$FN$1" ;;
+     *) FN="$FN`pwd`/$1" ;;
 esac
 
+echo "$FN"
 #we point it at the file written by the ssh wrapper for port and auth
 #information
 emacsclient -a "$ALTERNATE_EDITOR" -f ~/.emacs.d/server/server "$FN"
