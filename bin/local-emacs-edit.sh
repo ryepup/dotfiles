@@ -24,7 +24,12 @@ if ! nc -z 127.0.0.1 $PORT; then  #anyone listening on that port?
 fi;    
 
 #build the tramp filename
-FN="/`whoami`@`hostname`:$1"
+FN="/`whoami`@`hostname -f`:"
+case $1 in
+     /*) FN="$FN$1" ;;
+     *) FN="$FN`pwd`/$1" ;;
+esac
+
 echo "$FN"
 #we point it at the file written by the ssh wrapper for port and auth
 #information

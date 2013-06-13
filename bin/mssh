@@ -4,6 +4,7 @@ PORT=`egrep  -o '127.0.0.1:([0-9]*)' ~/.emacs.d/server/server | sed 's/127.0.0.1
 HOST=${@: -1}
 ssh $HOST "mkdir -m 700 -p ~/.emacs.d/server"
 scp -p ~/.emacs.d/server/server $HOST:.emacs.d/server/server
+scp -p ~/bin/local-emacs-edit.sh $HOST:bin/
 
 #-R : the remote port forward that lets emacsclient talk back
 #$@ : any other args this script was invoked with should be passed along.
