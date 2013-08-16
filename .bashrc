@@ -99,3 +99,7 @@ function git_repeat {
     date
     while ! git $1 ; do sleep 1; date; done
 }
+
+function git_all {
+    find . -maxdepth 2 -type d -name '.git' -print -and -exec git --git-dir="{}" --work-tree="{}"/../ $@ \;
+}
